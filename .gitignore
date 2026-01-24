@@ -1,0 +1,15 @@
+# Rust
+target/
+hello_world/target/
+Cargo.lock
+
+# Solana
+test-ledger/
+hello_world/test-ledger/
+*.so
+*.keypair.json
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
