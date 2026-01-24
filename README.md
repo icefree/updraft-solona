@@ -17,7 +17,7 @@
 
 - [Rust](https://www.rust-lang.org/tools/install)
 - [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools)
-- [Anchor Framework](https://www.anchor-lang.com/docs/installation) (可选，本项目主要使用原生 Solana SDK)
+- [Anchor Framework](https://www.anchor-lang.com/docs/installation)
 
 ## 快速开始
 
@@ -26,6 +26,7 @@
 ```bash
 cd hello_world
 cargo build-sbf
+cargo test -- --nocapture
 ```
 
 ### 2. 部署程序 (本地测试网)
