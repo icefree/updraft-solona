@@ -1,15 +1,28 @@
 # Rust
 target/
-hello_world/target/
+**/target/
 Cargo.lock
+**/Cargo.lock
 
 # Solana
 test-ledger/
-hello_world/test-ledger/
+**/test-ledger/
 *.so
 *.keypair.json
+.anchor/
+**/.anchor/
 
-# IDE
+# JavaScript / Node
+node_modules/
+**/node_modules/
+.yarn/
+**/.yarn/
+
+# IDE & OS
 .vscode/
 .idea/
 .DS_Store
+**/.DS_Store
+
+# Temporary
+**/*.rs.bk
