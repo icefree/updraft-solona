@@ -1,59 +1,69 @@
 # Updraft Solana 学习笔记
 
-这是一个用于学习 Solana 区块链开发的练习集。本项目将包含多个阶段的练习，从基础的入门合约到复杂的去中心化应用（DApp）。
+这是一个用于学习 Solana 区块链开发的系统性练习集。本项目旨在通过实践，帮助开发者从基础的 Native 开发逐步过度到使用 Anchor 框架进行高效开发。
 
-## 已包含的练习
+## 项目结构
 
-- `hello_world/`: **入门练习**。包含一个简单的 "Hello World" 合约以及一个 Rust 编写的客户端调用示例。
+本项目目前包含两个主要的练习目录：
+
+- `hello-native/`: **Solana 原生开发练习**。使用 Solana SDK 直接进行程序开发。
   - `src/lib.rs`: 链上程序逻辑。
-  - `examples/client.rs`: 客户端 RPC 调用示例。
-
-> [!TIP]
-> 这是一个持续更新的项目，未来将加入更多关于账户状态、Token 程序、PDA 以及 Anchor 框架的进阶练习。
-
-- `README.md`: 项目说明文件。
+  - `examples/client.rs`: 使用 Rust 编写的客户端 RPC 调用示例。
+- `hello-anchor/`: **Anchor 框架开发练习**。使用更现代、安全的 Anchor 框架进行开发。
+  - `programs/hello-anchor/`: Anchor 程序源代码。
+  - `tests/`: 使用 TypeScript 或 Rust 编写的集成测试。
 
 ## 开发环境要求
 
-- [Rust](https://www.rust-lang.org/tools/install)
-- [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools)
-- [Anchor Framework](https://www.anchor-lang.com/docs/installation)
+- [Rust](https://www.rust-lang.org/tools/install) (最新稳定版)
+- [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools) (建议 v1.18+)
+- [Anchor Framework](https://www.anchor-lang.com/docs/installation) (建议 v0.30+)
+- [Node.js](https://nodejs.org/) & [pnpm](https://pnpm.io/) (用于 Anchor 测试)
 
 ## 快速开始
 
-### 1. 编译 Solana 程序
+### 1. Solana 原生程序 (hello-native)
+
+#### 编译与测试
 
 ```bash
-cd hello_world
+cd hello-native
 cargo build-sbf
 cargo test -- --nocapture
 ```
 
-### 2. 部署程序 (本地测试网)
+#### 部署与运行 (本地测试网)
 
-首先启动本地验证节点：
+1. 启动验证节点: `solana-test-validator`
+2. 部署程序: `solana program deploy target/deploy/hello_world.so`
+3. 运行客户端: `cargo run --example client`
 
-```bash
-solana-test-validator
-```
+---
 
-在另一个终端中部署：
+### 2. Anchor 程序 (hello-anchor)
 
-```bash
-solana program deploy target/deploy/hello_world.so
-```
-
-### 3. 运行客户端示例
-
-确保本地测试网正在运行，且程序已成功部署。
+#### 安装依赖
 
 ```bash
-cd hello_world
-cargo run --example client
+cd hello-anchor
+pnpm install
 ```
 
-> [!NOTE]
-> 运行客户端前，请确保 `hello_world/examples/client.rs` 中的 `program_id` 与你部署后的程序 ID 一致。
+#### 编译与测试
+
+```bash
+anchor build
+anchor test
+```
+
+## 学习路线图
+
+1. [x] **Phase 1**: Hello World (Native & Anchor)
+2. [ ] **Phase 2**: 账户模型与状态管理 (Account & State)
+3. [ ] **Phase 3**: 程序派生地址 (PDA)
+4. [ ] **Phase 4**: Token 程序与 SPL 交互
+5. [ ] **Phase 5**: 跨程序调用 (CPI)
+6. [ ] **Phase 6**: 去中心化应用 (DApp) 实战
 
 ## 许可证
 
